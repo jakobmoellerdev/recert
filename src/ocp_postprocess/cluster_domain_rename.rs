@@ -133,23 +133,23 @@ async fn fix_etcd_resources(
     etcd_rename::fix_authentication(etcd_client, cluster_domain)
         .await
         .context("fixing authentication")?;
-    etcd_rename::fix_authentication_system_metadata(
-        etcd_client,
-        cluster_domain,
-        K8sResourceLocation::new(Some("openshift-authentication"), "Configmap", "v4-0-config-system-metadata", "v1"),
-    )
-    .await
-    .context("fixing authentication system metadata")?;
-    etcd_rename::fix_authentication_system_metadata(
-        etcd_client,
-        cluster_domain,
-        K8sResourceLocation::new(Some("openshift-config-managed"), "Configmap", "oauth-openshift", "v1"),
-    )
-    .await
-    .context("fixing authentication system metadata (config managed)")?;
-    etcd_rename::fix_authentication_config(etcd_client, cluster_domain)
-        .await
-        .context("fixing authentication config")?;
+    // etcd_rename::fix_authentication_system_metadata(
+    //     etcd_client,
+    //     cluster_domain,
+    //     K8sResourceLocation::new(Some("openshift-authentication"), "Configmap", "v4-0-config-system-metadata", "v1"),
+    // )
+    // .await
+    // .context("fixing authentication system metadata")?;
+    // etcd_rename::fix_authentication_system_metadata(
+    //     etcd_client,
+    //     cluster_domain,
+    //     K8sResourceLocation::new(Some("openshift-config-managed"), "Configmap", "oauth-openshift", "v1"),
+    // )
+    // .await
+    // .context("fixing authentication system metadata (config managed)")?;
+    // etcd_rename::fix_authentication_config(etcd_client, cluster_domain)
+    //     .await
+    //     .context("fixing authentication config")?;
     etcd_rename::fix_console_public_config(etcd_client, cluster_domain)
         .await
         .context("fixing console public config")?;
@@ -177,9 +177,9 @@ async fn fix_etcd_resources(
     etcd_rename::fix_kube_apiserver_configs(etcd_client, cluster_domain)
         .await
         .context("fixing kube apiserver system metadata")?;
-    etcd_rename::fix_oauth_metadata_configmap(etcd_client, cluster_domain)
-        .await
-        .context("fixing oauth metadata")?;
+    // etcd_rename::fix_oauth_metadata_configmap(etcd_client, cluster_domain)
+    //    .await
+    //    .context("fixing oauth metadata")?;
     etcd_rename::fix_kcm_config(etcd_client, &generated_infra_id)
         .await
         .context("fixing kcm config")?;
@@ -224,20 +224,20 @@ async fn fix_etcd_resources(
         .await
         .context("fixing routes")?;
     etcd_rename::delete_resources(etcd_client).await.context("fixing kcm pods")?;
-    etcd_rename::fix_oauth_client(
-        etcd_client,
-        cluster_domain,
-        K8sResourceLocation::new(None, "OAuthClient", "openshift-browser-client", "oauth.openshift.io/v1"),
-    )
-    .await
-    .context("fixing oauth browser client")?;
-    etcd_rename::fix_oauth_client(
-        etcd_client,
-        cluster_domain,
-        K8sResourceLocation::new(None, "OAuthClient", "openshift-challenging-client", "oauth.openshift.io/v1"),
-    )
-    .await
-    .context("fixing oauth challenging client")?;
+    // etcd_rename::fix_oauth_client(
+    //     etcd_client,
+    //     cluster_domain,
+    //     K8sResourceLocation::new(None, "OAuthClient", "openshift-browser-client", "oauth.openshift.io/v1"),
+    // )
+    // .await
+    // .context("fixing oauth browser client")?;
+    // etcd_rename::fix_oauth_client(
+    //     etcd_client,
+    //     cluster_domain,
+    //     K8sResourceLocation::new(None, "OAuthClient", "openshift-challenging-client", "oauth.openshift.io/v1"),
+    // )
+    // .await
+    // .context("fixing oauth challenging client")?;
     etcd_rename::fix_mcs_daemonset(etcd_client, cluster_domain)
         .await
         .context("fixing mcs daemonset")?;
